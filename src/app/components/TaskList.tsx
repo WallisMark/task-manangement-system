@@ -1,25 +1,28 @@
-import React from 'react'
+import { Tasks } from "../../../types/tasks"
+import Task from "./Task"
 
-const TaskList = () => {
+export interface TasksProps{
+    tasks:Tasks[]
+}
+
+const TaskList: React.FC<TasksProps> = ({tasks}) => {
   return (
     <div className="overflow-x-auto">
   <table className="table">
     {/* head */}
     <thead>
       <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Job</th>
+       
+        <th>Task Name</th>
+        <th>Edit Task</th>
+        <th>Delete Task</th>
       </tr>
     </thead>
     <tbody>
-      {/* row 1 */}
-      <tr>
-        <th>1</th>
-        <td>Cy Ganderton</td>
-        <td>Quality Control Specialist</td>
-        
-      </tr>
+     {tasks.map(task =>(
+      <Task key={task.id} task= {task}/>
+
+     ))}
       
     </tbody>
   </table>
